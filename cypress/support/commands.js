@@ -24,3 +24,24 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import "cypress-plugin-tab";
+Cypress.Commands.add("loginAs", (username, password) => {
+  cy.get('[name="username"]').type(username);
+  cy.get('[name="password"]').type(password);
+  cy.get('button[type="submit"]').click();
+});
+
+Cypress.Commands.add("shouldBeLoggedIn", () => {
+  cy.url().should("include", "dashboard");
+});
+
+Cypress.Commands.add("shouldSeeLoginError", () => {
+  cy.get(".oxd-alert").should("be.visible");
+});
+
+Cypress.Commands.add("shouldSeeUserRequired", () => {
+  cy.get(":nth-child(2) > .oxd-input-group > .oxd-text").should("be.visible");
+});
+
+Cypress.Commands.add("shouldSeePassRequired", () => {
+  cy.get(":nth-child(3) > .oxd-input-group > .oxd-text").should("be.visible");
+});
