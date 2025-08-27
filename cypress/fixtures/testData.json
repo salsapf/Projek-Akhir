@@ -1,0 +1,43 @@
+{
+  "users": {
+    "valid": {
+      "username": "Admin",
+      "password": "admin123"
+    },
+    "invalid": [
+      {
+        "username": "User",
+        "password": "admin123",
+        "description": "Invalid username"
+      },
+      {
+        "username": "Admin",
+        "password": "admin1234",
+        "description": "Invalid password"
+      },
+      {
+        "username": "ADMIN",
+        "password": "admin123",
+        "description": "Case sensitive Username"
+      },
+      {
+        "username": "Admin",
+        "password": "ADMIN123",
+        "description": "Case sensitive Password"
+      },
+      {
+        "username": "ADMIN",
+        "password": "ADMIN123",
+        "description": "Case sensitive Both"
+      },
+      {
+        "password": "admin123",
+        "description": "Empty Username"
+      },
+      {
+        "username": "Admin",
+        "description": "Empty Password"
+      }
+    ]
+  }
+}
