@@ -1,7 +1,7 @@
 {
-  "name": "login-orangehrm",
+  "name": "projek-akhir",
   "version": "1.0.0",
-  "description": "",
+  "description": "Comprehensive automation testing for OrangeHRM using Cypress with Page Object Model (POM) and Intercept.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

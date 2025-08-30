@@ -45,3 +45,22 @@ Cypress.Commands.add("shouldSeeUserRequired", () => {
 Cypress.Commands.add("shouldSeePassRequired", () => {
   cy.get(":nth-child(3) > .oxd-input-group > .oxd-text").should("be.visible");
 });
+
+Cypress.Commands.add("navigateToModule", (moduleName) => {
+  cy.contains(".oxd-main-menu-item", moduleName).click();
+});
+
+Cypress.Commands.add("waitForPageLoad", (urlFragment, timeout = 10000) => {
+  cy.url({ timeout }).should("include", urlFragment);
+});
+
+Cypress.Commands.add("performSearch", (searchTerm = "") => {
+  if (searchTerm) {
+    cy.get('input[type="text"]').first().clear().type(searchTerm);
+  }
+  cy.get('button[type="submit"]').click();
+});
+
+Cypress.Commands.add("resetSearch", () => {
+  cy.get('button[type="button"]').contains("Reset").click();
+});

@@ -39,5 +39,131 @@
         "description": "Empty Password"
       }
     ]
+  },
+  "forgotPassword": {
+    "testCases": [
+      {
+        "id": "TC-FP-004",
+        "username": "Admin",
+        "description": "Valid username - should succeed",
+        "expectedResult": "success"
+      },
+      {
+        "id": "TC-FP-005",
+        "username": "NonExistentUser123",
+        "description": "Invalid username - should handle gracefully",
+        "expectedResult": "handled"
+      },
+      {
+        "id": "TC-FP-006",
+        "username": "",
+        "description": "Empty username - should show validation error",
+        "expectedResult": "validation_error"
+      },
+      {
+        "id": "TC-FP-007",
+        "username": "user@domain.com",
+        "description": "Email format username",
+        "expectedResult": "handled"
+      },
+      {
+        "id": "TC-FP-008",
+        "username": "verylongusernamethatexceedsnormallimits123456789",
+        "description": "Very long username",
+        "expectedResult": "handled"
+      },
+      {
+        "id": "TC-FP-010",
+        "username": " Admin ",
+        "description": "Username with spaces",
+        "expectedResult": "handled"
+      },
+      {
+        "id": "TC-FP-011",
+        "username": "ADMIN",
+        "description": "Uppercase username",
+        "expectedResult": "handled"
+      }
+    ]
+  },
+  "directory": {
+    "searchScenarios": [
+      {
+        "id": "TC-DIR-005",
+        "name": "",
+        "jobTitle": "",
+        "location": "",
+        "description": "Search all employees",
+        "expectedResult": "has_results"
+      },
+      {
+        "id": "TC-DIR-006",
+        "name": "Admin",
+        "jobTitle": "",
+        "location": "",
+        "description": "Search by name only",
+        "expectedResult": "has_results"
+      },
+      {
+        "id": "TC-DIR-007",
+        "name": "NonExistentEmployee123",
+        "jobTitle": "",
+        "location": "",
+        "description": "Search non-existent employee",
+        "expectedResult": "no_results"
+      },
+      {
+        "id": "TC-DIR-008",
+        "name": "Adm",
+        "jobTitle": "",
+        "location": "",
+        "description": "Partial name search",
+        "expectedResult": "has_results"
+      },
+      {
+        "id": "TC-DIR-009",
+        "name": "ADMIN",
+        "jobTitle": "",
+        "location": "",
+        "description": "Case insensitive search",
+        "expectedResult": "has_results"
+      },
+      {
+        "id": "TC-DIR-027",
+        "name": "123Admin456",
+        "jobTitle": "",
+        "location": "",
+        "description": "Numeric characters in name",
+        "expectedResult": "no_results"
+      },
+      {
+        "id": "TC-DIR-028",
+        "name": "A",
+        "jobTitle": "",
+        "location": "",
+        "description": "Minimum character search",
+        "expectedResult": "variable"
+      }
+    ],
+    "jobTitles": [
+      "Admin",
+      "Sales Representative",
+      "HR Manager",
+      "Software Engineer",
+      "QA Engineer"
+    ],
+    "locations": [
+      "HQ - CA, USA",
+      "New York Sales Office",
+      "Texas R&D",
+      "London Office"
+    ],
+    "specialCharacterTests": [
+      "O'Connor",
+      "José García",
+      "李小明",
+      "user@company.com",
+      "user-name_123"
+    ]
   }
 }

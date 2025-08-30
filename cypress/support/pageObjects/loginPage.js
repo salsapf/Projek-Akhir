@@ -50,6 +50,19 @@ export class LoginPage {
     return this;
   }
 
+  // CLick forgot password
+  clickForgotPassword() {
+    cy.get(this.selectors.forgotPassword).click();
+    return this;
+  }
+
+  // Verify forgot password page
+  verifyForgotPasswordPage() {
+    cy.url().should("include", "requestPasswordResetCode");
+    cy.get(".oxd-text--h6").should("contain.text", "Reset Password");
+    return this;
+  }
+
   // Login with credentials
   login(username, password) {
     this.enterUsername(username);
@@ -63,12 +76,6 @@ export class LoginPage {
     this.enterUsername(username);
     this.enterPassword(password);
     cy.get(this.selectors.password).type("{enter}");
-    return this;
-  }
-
-  // Setup API interceptor
-  setupInterceptor(alias = "loginAPI") {
-    cy.intercept("POST", "**/auth/validate").as(alias);
     return this;
   }
 
@@ -121,6 +128,11 @@ export class LoginPage {
     cy.get(this.selectors.copyrigth1).should("be.visible");
     cy.get(this.selectors.copyrigth2).should("be.visible");
     cy.get(this.selectors.footer).should("be.visible");
+    return this;
+  }
+  // Setup API interceptor
+  setupInterceptor(alias = "loginAPI") {
+    cy.intercept("POST", "**/auth/validate").as(alias);
     return this;
   }
 
